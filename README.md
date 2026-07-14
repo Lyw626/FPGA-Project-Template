@@ -22,6 +22,7 @@ sdk/            SDK/Vitis 应用源码和工程配置
 docs/           项目文档，二进制文档使用 Git LFS
 output/config/  BIF 模板等生成配置
 output/generated/ 本地生成及发布暂存，不提交
+.agents/skills/ 仓库级 Codex Agent 技能
 project-control/ 版本控制与发布管理
   config/       项目版本、工程路径和发布文件配置
   scripts/      工作、检查和发布脚本
@@ -38,5 +39,15 @@ project-control/ 版本控制与发布管理
 .\project-control\scripts\Check-Project.ps1
 .\project-control\scripts\Publish-Release.ps1
 ```
+
+## Codex 同步 Agent
+
+模板在 `.agents/skills/sync-fpga-code/` 中提供仓库级同步 Agent。使用 Codex 打开仓库后，可以这样调用：
+
+```text
+使用 $sync-fpga-code 同步当前 FPGA 工程
+```
+
+该 Agent 会根据工作区状态选择安全拉取或提交推送，优先调用模板脚本，并在完成后验证本地与 GitHub 提交一致。它不会自动强推、重置、丢弃改动或使用云盘解决冲突。
 
 发布版本采用 `vYYYY.MM.DD.N`，例如 `v2026.07.14.1`。正式 ZIP 永久保存在 GitHub Releases，仓库只保存发布索引与校验值。

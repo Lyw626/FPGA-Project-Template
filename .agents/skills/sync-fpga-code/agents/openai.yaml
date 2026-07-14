@@ -1,0 +1,4 @@
+interface:
+  display_name: "FPGA 代码同步"
+  short_description: "安全管理 FPGA 工程的拉取、提交、推送与远程一致性验证"
+  default_prompt: "使用 $sync-fpga-code 安全同步当前 FPGA 工程，并验证本地与 GitHub 一致。"
