@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "artifacts": [
+    {
+      "path": "M1/project.runs/impl_1/top.bit",
+      "name": "top.bit",
+      "required": true
+    },
+    {
+      "path": "M1/project.runs/impl_1/top.ltx",
+      "name": "top.ltx",
+      "required": false
+    },
+    {
+      "path": "output/generated/BOOT.bin",
+      "name": "BOOT.bin",
+      "required": false
+    },
+    {
+      "path": "sdk/app/Debug/app.elf",
+      "name": "app.elf",
+      "required": false
+    },
+    {
+      "path": "M1/project.runs/impl_1/top_timing_summary_routed.rpt",
+      "name": "top_timing_summary_routed.rpt",
+      "required": true
+    },
+    {
+      "path": "M1/project.runs/impl_1/top_drc_routed.rpt",
+      "name": "top_drc_routed.rpt",
+      "required": true
+    },
+    {
+      "path": "M1/project.runs/impl_1/top_utilization_placed.rpt",
+      "name": "top_utilization_placed.rpt",
+      "required": true
+    }
+  ],
+  "bootImage": {
+    "enabled": false,
+    "FSBL": "sdk/fsbl/Debug/fsbl.elf",
+    "BITSTREAM": "M1/project.runs/impl_1/top.bit",
+    "APPLICATION": "sdk/app/Debug/app.elf"
+  }
+}

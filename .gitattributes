@@ -1,0 +1,28 @@
+* text=auto
+
+*.v text eol=lf
+*.sv text eol=lf
+*.vh text eol=crlf
+*.vhd text eol=lf
+*.vhdl text eol=lf
+*.xdc text eol=lf
+*.tcl text eol=lf
+*.ps1 text eol=crlf
+*.json text eol=lf
+*.md text eol=lf
+*.bif text eol=lf
+
+*.doc filter=lfs diff=lfs merge=lfs -text
+*.docx filter=lfs diff=lfs merge=lfs -text
+*.xls filter=lfs diff=lfs merge=lfs -text
+*.xlsx filter=lfs diff=lfs merge=lfs -text
+*.ppt filter=lfs diff=lfs merge=lfs -text
+*.pptx filter=lfs diff=lfs merge=lfs -text
+*.pdf filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.bmp filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.hdf filter=lfs diff=lfs merge=lfs -text
+*.xsa filter=lfs diff=lfs merge=lfs -text

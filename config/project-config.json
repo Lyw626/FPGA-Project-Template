@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "projectName": "PROJECT_NAME",
+  "repository": "OWNER/Prj_PROJECT_NAME",
+  "tools": {
+    "minimumGitLfsVersion": "3.7.1"
+  },
+  "vivado": {
+    "requiredVersion": "2017.4",
+    "projectFile": "M1/project.xpr",
+    "implementationDirectory": "M1/project.runs/impl_1",
+    "timingReport": "M1/project.runs/impl_1/top_timing_summary_routed.rpt",
+    "drcReport": "M1/project.runs/impl_1/top_drc_routed.rpt",
+    "routeStatusReport": "M1/project.runs/impl_1/top_route_status.rpt"
+  },
+  "release": {
+    "bifTemplate": "output/config/boot.bif.template",
+    "generatedBif": "output/generated/boot.bif",
+    "cfgDateConfirmationRequired": true
+  }
+}

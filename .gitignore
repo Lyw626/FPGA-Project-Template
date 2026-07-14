@@ -1,0 +1,61 @@
+# Vivado transient data
+**/.Xil/
+**/*.cache/
+**/*.hw/
+**/*.ip_user_files/
+**/*.runs/
+**/*.sim/
+**/*.sdk/
+**/.jobs/
+**/xsim.dir/
+**/sim/
+**/simulation/
+**/ipshared/
+
+# Vivado generated IP products (keep XCI, BD, COE and MIF inputs)
+**/ip/*/hdl/
+**/ip/*/synth/
+**/ip/*/sim/
+**/ip/**/*_sim_netlist.*
+**/ip/**/*_stub.*
+**/ip/**/*.dcp
+**/ip/**/*.vho
+**/ip/**/*.veo
+**/ip/*/mmcm_pll_drp_func_*.vh
+
+# SDK/Vitis/Eclipse workspace and build output
+**/.metadata/
+**/.sdk/
+**/.settings/
+**/RemoteSystemsTempFiles/
+**/webtalk/
+**/Debug/
+**/Release/
+**/*_bsp/libsrc/
+**/*_bsp/include/
+**/*_bsp/ps7_cortexa9_0/
+**/*_bsp/Makefile
+**/bootimage/
+
+# Generated release staging
+output/generated/*
+!output/generated/.gitkeep
+
+# Simulation databases, waveforms and tool logs
+*.wdb
+*.btree
+*.jou
+*.log
+*.pb
+*.str
+*.debug
+vivado_pid*.zip
+*.tmp
+
+# OS and editor files
+Thumbs.db
+Desktop.ini
+.DS_Store
+~$*
+*.swp
+*.swo
