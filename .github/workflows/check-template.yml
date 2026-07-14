@@ -12,9 +12,9 @@ jobs:
       - name: Validate JSON and PowerShell syntax
         shell: pwsh
         run: |
-          Get-Content config/project-config.json -Raw | ConvertFrom-Json | Out-Null
-          Get-Content config/release-files.json -Raw | ConvertFrom-Json | Out-Null
-          Get-ChildItem scripts -Filter *.ps1 | ForEach-Object {
+          Get-Content project-control/config/project-config.json -Raw | ConvertFrom-Json | Out-Null
+          Get-Content project-control/config/release-files.json -Raw | ConvertFrom-Json | Out-Null
+          Get-ChildItem project-control/scripts -Filter *.ps1 | ForEach-Object {
             $tokens = $null
             $errors = $null
             [System.Management.Automation.Language.Parser]::ParseFile(

@@ -4,8 +4,8 @@ param([switch]$Release)
 . (Join-Path $PSScriptRoot "Common.ps1")
 
 Assert-Repository
-$config = Get-JsonFile "config/project-config.json"
-$releaseFiles = Get-JsonFile "config/release-files.json"
+$config = Get-JsonFile "project-control/config/project-config.json"
+$releaseFiles = Get-JsonFile "project-control/config/release-files.json"
 $failures = New-Object System.Collections.Generic.List[string]
 
 function Add-Failure([string]$Message) {

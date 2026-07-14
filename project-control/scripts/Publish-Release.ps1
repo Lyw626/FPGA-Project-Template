@@ -10,8 +10,8 @@ param(
 Assert-Repository
 Assert-Command git
 $gh = Get-GhCommand
-$config = Get-JsonFile "config/project-config.json"
-$releaseFiles = Get-JsonFile "config/release-files.json"
+$config = Get-JsonFile "project-control/config/project-config.json"
+$releaseFiles = Get-JsonFile "project-control/config/release-files.json"
 
 & (Join-Path $PSScriptRoot "Check-Project.ps1") -Release
 
@@ -87,7 +87,7 @@ try {
     }
     if (-not $Notes) { $Notes = "Validated FPGA release." }
 
-    $manifestDirectory = Resolve-RepositoryPath "releases/$version"
+    $manifestDirectory = Resolve-RepositoryPath "project-control/releases/$version"
     New-Item -ItemType Directory -Path $manifestDirectory -Force | Out-Null
     $manifestPath = Join-Path $manifestDirectory "README.md"
     $manifest = @(
@@ -115,7 +115,7 @@ try {
     if (Test-Path -LiteralPath $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
     Compress-Archive -Path (Join-Path $stagePath "*") -DestinationPath $zipPath -CompressionLevel Optimal
 
-    Invoke-Git add "releases/$version/README.md"
+    Invoke-Git add "project-control/releases/$version/README.md"
     $releasePrefix = ([char]0x53D1) + ([char]0x5E03) + ([char]0xFF1A)
     Invoke-Git commit -m "$releasePrefix$version"
     Invoke-Git tag -a $version -m "Release $version"

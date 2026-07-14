@@ -6,7 +6,7 @@ param()
 Assert-Repository
 Assert-Command git
 Assert-CleanWorkingTree
-$config = Get-JsonFile "config/project-config.json"
+$config = Get-JsonFile "project-control/config/project-config.json"
 
 Push-Location (Get-RepositoryRoot)
 try {

@@ -2,7 +2,7 @@
 
 ## 未发布
 
-- 暂无。
+- 将 `config/`、`scripts/`、`releases/` 统一收纳到 `project-control/`。
 
 ## 2026-07-14
 

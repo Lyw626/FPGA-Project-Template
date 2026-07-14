@@ -6,7 +6,7 @@ param()
 Assert-Repository
 Assert-Command git
 $gh = Get-GhCommand
-$config = Get-JsonFile "config/project-config.json"
+$config = Get-JsonFile "project-control/config/project-config.json"
 
 Write-Host "Checking Git LFS..."
 $lfsVersionLines = @(& git lfs version)

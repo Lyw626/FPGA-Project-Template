@@ -1,7 +1,7 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$script:RepositoryRoot = Split-Path -Parent $PSScriptRoot
+$script:RepositoryRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 
 function Get-RepositoryRoot {
     return $script:RepositoryRoot
