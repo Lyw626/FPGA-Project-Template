@@ -3,6 +3,7 @@
 ## 未发布
 
 - 将 `config/`、`scripts/`、`releases/` 统一收纳到 `project-control/`。
+- 使用临时 Git 索引检查待提交文件稳定性，兼容中文路径和 VS Code PowerShell 终端。
 
 ## 2026-07-14
 

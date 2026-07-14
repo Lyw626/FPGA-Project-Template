@@ -126,41 +126,34 @@ function Wait-ChangedFilesStable {
     param([int]$Seconds = 2)
 
     Push-Location $script:RepositoryRoot
+    $temporaryIndex = Join-Path $env:TEMP ("fpga-save-{0}.index" -f [guid]::NewGuid().ToString("N"))
+    $previousIndex = $env:GIT_INDEX_FILE
     try {
-        $changedPaths = @(Get-GitOutput diff --name-only)
-        $untrackedPaths = @(Get-GitOutput ls-files --others --exclude-standard)
-        $paths = @(($changedPaths + $untrackedPaths) |
-                Where-Object { $_ } |
-                Sort-Object -Unique)
-
-        if ($paths.Count -eq 0) {
-            return
-        }
-
-        $before = @{}
-        foreach ($path in $paths) {
-            $fullPath = Resolve-RepositoryPath $path
-            if (Test-Path -LiteralPath $fullPath -PathType Leaf) {
-                $file = Get-Item -LiteralPath $fullPath
-                $before[$path] = "$($file.Length):$($file.LastWriteTimeUtc.Ticks)"
-            }
-        }
+        $env:GIT_INDEX_FILE = $temporaryIndex
+        Invoke-Git read-tree HEAD
+        Invoke-Git -c core.safecrlf=false add -A
+        $before = (Get-GitOutput write-tree | Select-Object -First 1).Trim()
 
         Start-Sleep -Seconds $Seconds
 
-        foreach ($path in $before.Keys) {
-            $fullPath = Resolve-RepositoryPath $path
-            if (-not (Test-Path -LiteralPath $fullPath -PathType Leaf)) {
-                throw "A changed file disappeared while waiting: $path"
-            }
-            $file = Get-Item -LiteralPath $fullPath
-            $after = "$($file.Length):$($file.LastWriteTimeUtc.Ticks)"
-            if ($after -ne $before[$path]) {
-                throw "A file is still changing: $path"
-            }
+        Invoke-Git -c core.safecrlf=false add -A
+        $after = (Get-GitOutput write-tree | Select-Object -First 1).Trim()
+        if ($after -ne $before) {
+            throw "Files are still changing. Stop Vivado build and simulation tasks, then try again."
         }
     }
     finally {
+        if ($null -eq $previousIndex) {
+            Remove-Item Env:GIT_INDEX_FILE -ErrorAction SilentlyContinue
+        }
+        else {
+            $env:GIT_INDEX_FILE = $previousIndex
+        }
+        @($temporaryIndex, "$temporaryIndex.lock") | ForEach-Object {
+            if (Test-Path -LiteralPath $_) {
+                Remove-Item -LiteralPath $_ -Force
+            }
+        }
         Pop-Location
     }
 }
