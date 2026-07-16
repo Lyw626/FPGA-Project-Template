@@ -9,6 +9,38 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v5
+      - name: Check required template files
+        shell: pwsh
+        run: |
+          $requiredFiles = @(
+            ".agents/skills/sync-fpga-code/SKILL.md"
+            ".agents/skills/sync-fpga-code/agents/openai.yaml"
+            ".gitattributes"
+            ".gitignore"
+            "M1/.gitkeep"
+            "constraints/.gitkeep"
+            "docs/DEVELOPMENT.md"
+            "docs/RELEASE.md"
+            "ip/.gitkeep"
+            "output/config/boot.bif.template"
+            "output/generated/.gitkeep"
+            "project-control/config/project-config.json"
+            "project-control/config/release-files.json"
+            "project-control/releases/README.md"
+            "project-control/scripts/Check-Project.ps1"
+            "project-control/scripts/Common.ps1"
+            "project-control/scripts/New-WorkBranch.ps1"
+            "project-control/scripts/Publish-Release.ps1"
+            "project-control/scripts/Save-Work.ps1"
+            "project-control/scripts/Setup-Computer.ps1"
+            "project-control/scripts/Start-Work.ps1"
+            "rtl/.gitkeep"
+            "sdk/.gitkeep"
+          )
+          $missingFiles = @($requiredFiles | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) })
+          if ($missingFiles.Count -gt 0) {
+            throw "Required template files are missing:`n$($missingFiles -join [Environment]::NewLine)"
+          }
       - name: Validate JSON and PowerShell syntax
         shell: pwsh
         run: |

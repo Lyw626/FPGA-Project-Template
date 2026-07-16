@@ -6,6 +6,7 @@
 - 使用临时 Git 索引检查待提交文件稳定性，兼容中文路径和 VS Code PowerShell 终端。
 - 增加仓库级 `$sync-fpga-code` Codex 同步 Agent。
 - 将 `$sync-fpga-code` 调整为一次确认后自动部署整个仓库。
+- 增加模板必需文件完整性检查，并补齐临时仿真忽略和固定 ELF 的 Git LFS 规则。
 
 ## 2026-07-14
 

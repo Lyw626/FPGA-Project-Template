@@ -11,6 +11,7 @@
 **/sim/
 **/simulation/
 **/ipshared/
+**/tb_*_vivado/
 
 # Vivado generated IP products (keep XCI, BD, COE and MIF inputs)
 **/ip/*/hdl/

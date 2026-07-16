@@ -26,3 +26,4 @@
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.hdf filter=lfs diff=lfs merge=lfs -text
 *.xsa filter=lfs diff=lfs merge=lfs -text
+output/config/*.elf filter=lfs diff=lfs merge=lfs -text

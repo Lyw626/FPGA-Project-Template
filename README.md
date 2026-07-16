@@ -29,6 +29,21 @@ project-control/ 版本控制与发布管理
   releases/     GitHub Release 索引
 ```
 
+## 模板必需文件
+
+使用 **Use this template** 创建项目时，以下基础设施会随仓库一起复制：
+
+- `.agents/skills/sync-fpga-code/`：一键完整同步和部署 Agent。
+- `project-control/scripts/`：电脑配置、开始工作、分支、保存提交、工程检查和发布脚本。
+- `project-control/config/`：项目参数和发布产物路径模板。
+- `project-control/releases/`：GitHub Release 版本索引。
+- `output/config/boot.bif.template`：可移植 BOOT 镜像配置模板。
+- `.gitattributes`：换行规则和 Git LFS 跟踪规则。
+- `.gitignore`：Vivado、SDK、仿真及发布生成文件忽略规则。
+- `.github/workflows/check-template.yml`：必需文件、JSON 和 PowerShell 语法检查。
+
+GitHub Actions 会阻止缺少上述必需文件的模板更新。
+
 ## 常用命令
 
 ```powershell
